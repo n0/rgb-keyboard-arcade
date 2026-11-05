@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reproducible, captioned demos from the real engine. No keyboard or desktop I/O.
+"""Reproducible demos from the real engine. No keyboard or desktop I/O.
 
 Inputs are scripted; game rules, timing, LED effects, and physical geometry are
 unchanged. Snake's scripted player plans legal routes; Minesweeper's scripted
@@ -17,7 +17,7 @@ from rgb_keyboard_arcade.autopilot import choose_avoiding
 from rgb_keyboard_arcade.config import DEFAULT, load_profile
 from rgb_keyboard_arcade.modes import static_routes, tail_route
 
-WIDTH, HEIGHT = 960, 490
+WIDTH, HEIGHT = 960, 390
 STEP = .025  # Same simulation cadence as the device daemon.
 BG = (12, 13, 17)
 INK = (244, 231, 215)
@@ -44,15 +44,11 @@ class Clip:
         self.fps, self.output = fps, output
         self.now = 0.
         self.frames, self.chapters, self.proofs = [], [], []
-        self.caption = ('', '')
         self.next_frame = 0.
         self.shots = []
         self.last_phase = None
 
     def chapter(self, title, detail):
-        for text, size in ((title, 24), (detail, 14)):
-            assert FONTS[size].getlength(text) <= WIDTH - 68, f'Caption overflows: {text}'
-        self.caption = (title, detail)
         self.chapters.append({'at': round(self.now, 3), 'title': title, 'detail': detail})
         self.shots.append((len(self.frames) + round(self.fps * .7), title))
 
@@ -142,22 +138,19 @@ class Clip:
             foreground = (23, 20, 25) if sum(rgb) > 430 else ((242, 235, 222) if lit else (83, 84, 94))
             d.text(((box[0] + box[2]) / 2, (box[1] + box[3]) / 2), text,
                    anchor='mm', font=FONTS[10 if len(text) > 3 else 12], fill=foreground)
-        d.line((34, 392, WIDTH - 34, 392), fill=(41, 40, 47))
-        d.rectangle((34, 391, 69, 393), fill=accent)
-        d.text((34, 407), self.caption[0], font=FONTS[24], fill=INK)
-        d.text((34, 446), self.caption[1], font=FONTS[14], fill=MUTED)
         return im
 
     def save(self):
         self.output.mkdir(parents=True, exist_ok=True)
         # One palette per clip prevents unrelated per-frame color quantization
-        # from making static keys/captions shimmer. Reserve resolution for LEDs.
-        swatches = Image.new('RGB', (160 * 24, 82))
+        # from making static keys and titles shimmer. Reserve resolution for LEDs.
+        swatch_height = round(HEIGHT / 6)
+        swatches = Image.new('RGB', (160 * 24, swatch_height))
         for i in range(24):
             index = round(i * (len(self.frames) - 1) / 23)
-            swatches.paste(self.frames[index].resize((160, 82)), (i * 160, 0))
+            swatches.paste(self.frames[index].resize((160, swatch_height)), (i * 160, 0))
         sampled = swatches.quantize(colors=224, method=Image.Quantize.MEDIANCUT)
-        # Downsampled swatches can lose the exact text ink and tint captions
+        # Downsampled swatches can lose the exact text ink and tint titles
         # toward a nearby LED hue. Reserve the static UI colors explicitly.
         reserved = [BG, INK, MUTED, (19, 20, 26), (38, 39, 47), (15, 16, 21),
                     (30, 31, 38), (41, 40, 47), (23, 20, 25), (242, 235, 222),
@@ -190,11 +183,11 @@ class Clip:
         thumbs = []
         for index, title in self.shots:
             index = min(index, len(self.frames) - 1)
-            thumb = self.frames[index].resize((480, 245))
+            thumb = self.frames[index].resize((480, HEIGHT // 2))
             thumbs.append(thumb)
-        sheet = Image.new('RGB', (960, 245 * math.ceil(len(thumbs) / 2)), BG)
+        sheet = Image.new('RGB', (960, (HEIGHT // 2) * math.ceil(len(thumbs) / 2)), BG)
         for i, thumb in enumerate(thumbs):
-            sheet.paste(thumb, ((i % 2) * 480, (i // 2) * 245))
+            sheet.paste(thumb, ((i % 2) * 480, (i // 2) * (HEIGHT // 2)))
         sheet.save(path)
 
 
