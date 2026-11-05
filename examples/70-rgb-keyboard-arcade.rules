@@ -1,0 +1,4 @@
+# Optional Linux input access for the tested keyboard only.
+# Review before installing as /etc/udev/rules.d/70-rgb-keyboard-arcade.rules.
+# Grants the active local seat user access; no blanket membership of the input group.
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{idVendor}=="1532", ATTRS{idProduct}=="028a", TAG+="uaccess"

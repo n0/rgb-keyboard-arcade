@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rgb-keyboard-arcade"
+version = "0.1.0"
+description = "The dumbest way to play video games with a computer. Snake, Minesweeper and Pong on your RGB keyboard."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "GPL-3.0-only"
+license-files = ["LICENSE", "NOTICE.md"]
+authors = [{name = "rgb-keyboard-arcade contributors"}]
+classifiers = ["Development Status :: 3 - Alpha", "Operating System :: POSIX :: Linux", "Topic :: Games/Entertainment", "Programming Language :: Python :: 3"]
+
+[project.urls]
+Repository = "https://github.com/n0/rgb-keyboard-arcade"
+Issues = "https://github.com/n0/rgb-keyboard-arcade/issues"
+
+[project.optional-dependencies]
+linux = ["evdev>=1.6", "dbus-python>=1.3"]
+dev = ["Pillow>=10.1", "build>=1"]
+
+[project.scripts]
+rgb-keyboard-arcade = "rgb_keyboard_arcade.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+rgb_keyboard_arcade = ["profiles/*.json", "widgets/quickshell/*.qml"]

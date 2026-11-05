@@ -1,0 +1,32 @@
+{
+  "profile": "blade-15-2022-us",
+  "device_name": "Razer Blade 15 Advanced (Early 2022)",
+  "reduced_motion": false,
+  "require_watch_client": false,
+  "socket": null,
+  "shortcut": {
+    "key": "Esc",
+    "modifiers": [
+      "Super"
+    ]
+  },
+  "bindings": {
+    "common": {
+      "back": "Esc",
+      "mode": "`",
+      "difficulty": "Tab"
+    },
+    "snake": {
+      "up": "Up",
+      "right": "Right",
+      "down": "Down",
+      "left": "Left"
+    },
+    "pong": {
+      "p1_up": "R Shift",
+      "p1_down": "Right",
+      "p2_up": "L Shift",
+      "p2_down": "L Ctrl"
+    }
+  }
+}

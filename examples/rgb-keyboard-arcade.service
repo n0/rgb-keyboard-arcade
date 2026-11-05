@@ -1,0 +1,16 @@
+[Unit]
+Description=RGB keyboard arcade
+After=graphical-session-pre.target
+PartOf=graphical-session.target
+
+[Service]
+Type=notify
+# Replace with the absolute path to the executable from your installation/venv.
+ExecStart=%h/.local/bin/rgb-keyboard-arcade serve
+Restart=on-failure
+RestartSec=3
+WatchdogSec=5
+TimeoutStopSec=3
+
+[Install]
+WantedBy=graphical-session.target
