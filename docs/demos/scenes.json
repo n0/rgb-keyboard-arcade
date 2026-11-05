@@ -1,0 +1,289 @@
+{
+  "simulation_step": 0.025,
+  "scripted_inputs": true,
+  "clips": [
+    {
+      "file": "arcade.gif",
+      "seconds": 5.35,
+      "fps": 20,
+      "chapters": [
+        {
+          "at": 0.0,
+          "title": "Your keyboard is the display.",
+          "detail": "Super + Esc opens Arcade. Press again to skip a title or switch games."
+        }
+      ],
+      "engine_phases": [
+        {
+          "at": 0.0,
+          "phase": "marquee"
+        }
+      ]
+    },
+    {
+      "file": "snake.gif",
+      "seconds": 34.25,
+      "fps": 20,
+      "chapters": [
+        {
+          "at": 0.0,
+          "title": "Every game gets an entrance.",
+          "detail": "Actual five-row LED lettering, on the calibrated keyboard layout."
+        },
+        {
+          "at": 5.05,
+          "title": "The menu is already playing.",
+          "detail": "A roaming rainbow snake previews the mode. Arrow keys start a fresh round."
+        },
+        {
+          "at": 7.05,
+          "title": "Scatter. Spring back. Start.",
+          "detail": "The preview bursts outward, then every particle gathers into your new snake."
+        },
+        {
+          "at": 9.25,
+          "title": "Eat. Grow. Keep moving.",
+          "detail": "Orange head to amber tail. The opening shield breathes for three seconds."
+        },
+        {
+          "at": 17.65,
+          "title": "Rainbow frenzy. A wave becomes the timer.",
+          "detail": "The fifth apple sends a shockwave to the edges. Dodge bombs until the side LEDs run out."
+        },
+        {
+          "at": 28.65,
+          "title": "Next stage, one shutter at a time.",
+          "detail": "The snake recolors first. Opposed column shutters count you back into play."
+        },
+        {
+          "at": 31.65,
+          "title": "Even losing gets choreography.",
+          "detail": "Red travels from head to tail, then the body scatters into embers and goes dark."
+        }
+      ],
+      "engine_phases": [
+        {
+          "at": 0.0,
+          "phase": "marquee"
+        },
+        {
+          "at": 4.95,
+          "phase": "running"
+        },
+        {
+          "at": 7.05,
+          "phase": "dying"
+        },
+        {
+          "at": 9.225,
+          "phase": "running"
+        },
+        {
+          "at": 17.625,
+          "phase": "powering"
+        },
+        {
+          "at": 18.625,
+          "phase": "running"
+        },
+        {
+          "at": 28.625,
+          "phase": "staging"
+        },
+        {
+          "at": 30.425,
+          "phase": "running"
+        },
+        {
+          "at": 31.65,
+          "phase": "dying"
+        }
+      ]
+    },
+    {
+      "file": "snake-frenzy.gif",
+      "seconds": 4.9,
+      "fps": 20,
+      "chapters": [
+        {
+          "at": 0.0,
+          "title": "A bomb in your path.",
+          "detail": "Tapping an empty cell during a frenzy places a flashing red / white hazard."
+        },
+        {
+          "at": 1.5,
+          "title": "Rainbow deaths go out differently.",
+          "detail": "White ignition, expanding spectrum rings, curved sparks, then blackout."
+        }
+      ],
+      "engine_phases": [
+        {
+          "at": 0.0,
+          "phase": "running"
+        },
+        {
+          "at": 1.55,
+          "phase": "dying"
+        }
+      ]
+    },
+    {
+      "file": "snake-timer.gif",
+      "seconds": 12.45,
+      "fps": 20,
+      "chapters": [
+        {
+          "at": 0.0,
+          "title": "A different kind of pressure.",
+          "detail": "Timer mode: purple snake, fixed pace, and an apple with a deadline."
+        },
+        {
+          "at": 5.2,
+          "title": "Edges become portals.",
+          "detail": "Cross an edge, reappear one lane over. Eat before white turns yellow, orange, red."
+        },
+        {
+          "at": 7.95,
+          "title": "Miss the deadline. Feel the consequence.",
+          "detail": "The apple fades away; a procedural death sequence follows the body."
+        }
+      ],
+      "engine_phases": [
+        {
+          "at": 0.0,
+          "phase": "running"
+        },
+        {
+          "at": 3.0,
+          "phase": "dying"
+        },
+        {
+          "at": 5.175,
+          "phase": "running"
+        },
+        {
+          "at": 9.825,
+          "phase": "dying"
+        }
+      ]
+    },
+    {
+      "file": "minesweeper.gif",
+      "seconds": 23.45,
+      "fps": 20,
+      "chapters": [
+        {
+          "at": 0.0,
+          "title": "Every game gets an entrance.",
+          "detail": "Actual five-row LED lettering, on the calibrated keyboard layout."
+        },
+        {
+          "at": 8.55,
+          "title": "Fifty-eight keys. One minefield.",
+          "detail": "A live survey preview. The optional widget adds exact clue numbers, shown here."
+        },
+        {
+          "at": 10.55,
+          "title": "Tap, release, reveal.",
+          "detail": "A safe first opening expands outward as a wave of clues."
+        },
+        {
+          "at": 13.575,
+          "title": "Hold to flag.",
+          "detail": "A 450 ms hold warms the key to orange. Release keeps the flag in place."
+        },
+        {
+          "at": 16.725,
+          "title": "Clues ripple through the board.",
+          "detail": "Real seeded layout. Scripted safe reveals; every number comes from neighboring mines."
+        },
+        {
+          "at": 20.475,
+          "title": "One wrong tap. Chain detonation.",
+          "detail": "The impact spreads across the physical key layout, then the board falls dark."
+        }
+      ],
+      "engine_phases": [
+        {
+          "at": 0.0,
+          "phase": "marquee"
+        },
+        {
+          "at": 8.45,
+          "phase": "running"
+        },
+        {
+          "at": 10.55,
+          "phase": "entering"
+        },
+        {
+          "at": 12.05,
+          "phase": "running"
+        },
+        {
+          "at": 20.475,
+          "phase": "dying"
+        }
+      ]
+    },
+    {
+      "file": "pong.gif",
+      "seconds": 24.1,
+      "fps": 20,
+      "chapters": [
+        {
+          "at": 0.0,
+          "title": "Every game gets an entrance.",
+          "detail": "Actual five-row LED lettering, on the calibrated keyboard layout."
+        },
+        {
+          "at": 4.55,
+          "title": "Two paddles. One very small arena.",
+          "detail": "Solo AI or two players. The preview plays while the controls orbit in rainbow."
+        },
+        {
+          "at": 6.55,
+          "title": "Charge the paddles. Assemble the serve.",
+          "detail": "P1: right Shift / right arrow. P2: left Shift / left Ctrl."
+        },
+        {
+          "at": 9.175,
+          "title": "A rally across the keys.",
+          "detail": "Continuous paddle control, ball trails, wall impacts, and collision ripples."
+        },
+        {
+          "at": 13.975,
+          "title": "Every point lights up the score.",
+          "detail": "Bottom-right Alt / Fn / Ctrl tally P1. Bottom-left Fn / Super / Alt tally P2."
+        },
+        {
+          "at": 21.15,
+          "title": "First to three. Victory wave.",
+          "detail": "The winning side washes across the arena. Score LEDs stay lit through the celebration."
+        }
+      ],
+      "engine_phases": [
+        {
+          "at": 0.0,
+          "phase": "marquee"
+        },
+        {
+          "at": 4.45,
+          "phase": "running"
+        },
+        {
+          "at": 6.55,
+          "phase": "entering"
+        },
+        {
+          "at": 7.95,
+          "phase": "running"
+        },
+        {
+          "at": 21.125,
+          "phase": "dying"
+        }
+      ]
+    }
+  ]
+}

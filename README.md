@@ -4,11 +4,48 @@
 
 Play **Snake, Minesweeper, and Pong on a per-key RGB keyboard**. The keyboard is the display and controller: drifting previews, scrolling LED titles, ripple effects, three-point Pong scores, and increasingly unfortunate bomb placements.
 
-![Game-engine demo of Snake, Minesweeper and Pong](docs/demo.gif)
+![Rainbow ARCADE lettering scrolling across the keyboard](docs/demos/arcade.gif)
 
 This is the working Linux/OpenRazer version extracted from a personal desktop setup. **The UI is optional.** Start the daemon, bind one shortcut, and play on the keyboard. An independent Quickshell widget adds a live LED preview, Minesweeper numbers, game selection and settings; it does not replace your bar or wallpaper.
 
 **Tested hardware:** Razer Blade 15 Advanced (Early 2022), US ANSI, USB `1532:028a`. Other keyboards, arbitrary layouts, Windows and macOS are not supported by this release. The game renderer can run without hardware for development, but the actual device/input integration is Linux-specific.
+
+## Watch it play
+
+These **20 fps renders use the actual game engine, animation timings, and calibrated key geometry**, with deterministic scripted inputs and added captions. They are not physical keyboard footage. Nothing speeds through an entry, explosion, or stage transition.
+
+### Snake
+
+The roaming preview bursts apart and springs into a fresh snake. Five real apple pickups trigger the rainbow wave; side LEDs become the countdown, then column shutters reveal the next palette. A head-to-tail death wave closes the round.
+
+![Snake: particle entry, apple pickups, rainbow activation, bomb hazards, stage shutters and procedural death](docs/demos/snake.gif)
+
+<details>
+<summary>More Snake: rainbow explosions and Timer mode</summary>
+
+**Rainbow death:** a tapped bomb triggers white ignition, spectrum shockwaves, and curved color sparks.
+
+![Rainbow Snake: placing a bomb, impact, spectrum rings and scattered sparks](docs/demos/snake-frenzy.gif)
+
+**Timer:** fixed pace, offset edge portals, and food that fades white → yellow → orange → red. Miss its deadline and the snake dissolves.
+
+![Timer Snake: entry, timed food, portal movement and a deadline death](docs/demos/snake-timer.gif)
+
+</details>
+
+### Minesweeper
+
+Tap and release to send a reveal wave through the board. Hold to flag. One wrong tap starts a chain detonation. Numbers below are the optional widget's clue overlay; the physical keyboard communicates clues through LED colors.
+
+![Minesweeper: survey entrance, safe opening, hold-to-flag, clue reveals and chain detonation](docs/demos/minesweeper.gif)
+
+### Pong
+
+Opposing paddles assemble the serve. Rallies leave trails and impact ripples; each point sends a scoring wave across the keys. The bottom modifiers tally the score. First to three gets the victory animation.
+
+![Two-player Pong: paddle entry, scripted rally, point waves, score LEDs and a three-point victory](docs/demos/pong.gif)
+
+Prefer still images? [Arcade](docs/demos/arcade.png) · [Snake](docs/demos/snake.png) · [Rainbow effects](docs/demos/snake-frenzy.png) · [Timer](docs/demos/snake-timer.png) · [Minesweeper](docs/demos/minesweeper.png) · [Pong](docs/demos/pong.png). [Caption timings and captured engine phases](docs/demos/scenes.json).
 
 ## Try it without hardware
 
@@ -88,7 +125,7 @@ python scripts/build_demo.py
 python -m build
 ```
 
-The GIF above is rendered from actual game frames and the bundled LED geometry, not a recording of someone else's desktop. It can be regenerated without a keyboard. Hardware dependencies are imported only when running a real device daemon.
+The demos are generated without a keyboard. Run `python scripts/build_demo.py` to rebuild all six, or add `--only arcade`, `--only snake`, `--only minesweeper`, or `--only pong` while iterating. Snake also builds its two effects clips. Outputs include GIFs, still alternatives, and a chapter/engine-phase manifest; contact sheets are written to your temporary directory for visual review. Hardware dependencies are imported only when running a real device daemon.
 
 The games are pure Python simulations. `daemon.py` contains the Linux input/OpenRazer integration, `bindings.py` translates input and hints, and the widget is a socket client. This first release deliberately retains the calibrated 10×5 Snake/Pong board, 58-cell Minesweeper board, required key labels and 6×16 device assumptions. Custom profile files are an adaptation starting point, not universal keyboard support. See [contributing](CONTRIBUTING.md).
 
