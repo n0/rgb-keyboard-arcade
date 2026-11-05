@@ -9,3 +9,5 @@ Keep games independent of device I/O. Keep the widget optional and communicate t
 Tests should exercise player-visible behavior or integration boundaries. Avoid tests that restate implementation expressions, snapshots that merely detect changes, and regression tests without a demonstrated behavioral gap. Describe what you tried with or without hardware in a contribution.
 
 All contributions must be distributable under GPL-3.0 with appropriate attribution. Do not add private desktop assets or upstream code without compatible licensing and notices.
+
+For Windows/macOS ports and broader layout support, start with the [portability roadmap in the README](README.md#help-bring-arcade-to-more-keyboards-and-operating-systems). Propose the LED output, input/capture, session lifecycle, and configuration boundaries before replacing the existing Linux integration. A port should keep existing gameplay and the UI-free path working.

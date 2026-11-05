@@ -23,7 +23,7 @@ python -m venv .venv
 In another terminal:
 
 ```sh
-.venv/bin/rgb-keyboard-arcade cycle-game   # enter, with GAME MODE title
+.venv/bin/rgb-keyboard-arcade cycle-game   # enter, with ARCADE title
 .venv/bin/rgb-keyboard-arcade cycle-game   # skip a title, or cycle games when none is showing
 .venv/bin/rgb-keyboard-arcade status
 .venv/bin/rgb-keyboard-arcade widget       # optional; requires Quickshell on Wayland
@@ -51,7 +51,7 @@ No installer changes system permissions, desktop configuration, autostart, or fi
 
 | Key | Action |
 | --- | --- |
-| Super+Esc | Enter game mode; cycle Snake → Minesweeper → Pong |
+| Super+Esc | Enter Arcade; cycle Snake → Minesweeper → Pong |
 | Super+Esc while text scrolls | Skip into the current game's preview |
 | Esc | Active → Passive preview → Default lighting |
 | Backtick | Cycle the selected game's modes while in Passive |
@@ -91,6 +91,17 @@ python -m build
 The GIF above is rendered from actual game frames and the bundled LED geometry, not a recording of someone else's desktop. It can be regenerated without a keyboard. Hardware dependencies are imported only when running a real device daemon.
 
 The games are pure Python simulations. `daemon.py` contains the Linux input/OpenRazer integration, `bindings.py` translates input and hints, and the widget is a socket client. This first release deliberately retains the calibrated 10×5 Snake/Pong board, 58-cell Minesweeper board, required key labels and 6×16 device assumptions. Custom profile files are an adaptation starting point, not universal keyboard support. See [contributing](CONTRIBUTING.md).
+
+## Help bring Arcade to more keyboards and operating systems
+
+Contributions are welcome! The games should be shared; device and operating-system support should be replaceable. The current release still has board-size and key-label assumptions, so a new layout needs more than a device-name change.
+
+- **More keyboards:** contribute verified LED addresses, physical key geometry, playable regions, and input mappings. Start with a profile for a real device and document what you tested.
+- **Layout independence:** help separate physical keys, LED cells, and logical game coordinates so missing keys and irregular layouts have explicit behavior.
+- **Windows support:** contribute an LED-output backend and an input/session backend, including focused device capture, shortcut handling, and release on lock, suspend, or exit. OpenRazer and Linux evdev cannot provide the Windows integration.
+- **macOS support:** the same backend separation applies, with compatible device access and the required input permissions.
+
+Adding another compatible OpenRazer keyboard is a smaller step than a Windows port. A reliable Windows port is a substantial integration project, rather than a packaging change; a native optional widget would be a separate contribution. Hardware-free rendering provides a starting point, but does not establish platform compatibility. See [CONTRIBUTING.md](CONTRIBUTING.md), or open an issue with your device, proposed backend, and test setup before a large port.
 
 ## License and attribution
 

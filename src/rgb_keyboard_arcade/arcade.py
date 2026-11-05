@@ -36,13 +36,13 @@ class Arcade:
   if self.marquee:
    self.marquee=None;self.current.reset(now)
   elif self.mode=='default':
-   self.current.set_mode('passive',now);self.title('GAME MODE','startup',now)
+   self.current.set_mode('passive',now);self.title('ARCADE','startup',now)
   else:
    ids=[k for k,_,_ in GAMES];self.select_game(ids[(ids.index(self.game_id)+1)%len(ids)],now)
  def set_mode(self,mode,now):
   old=self.mode;self.current.set_mode(mode,now)
   if mode=='default':self.marquee=None
-  elif old=='default' and mode=='passive':self.title('GAME MODE','startup',now)
+  elif old=='default' and mode=='passive':self.title('ARCADE','startup',now)
  def back(self,now):
   if self.marquee:
    self.marquee=None;self.current.set_mode('default',now)

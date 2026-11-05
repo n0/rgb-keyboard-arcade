@@ -152,7 +152,7 @@ Rectangle {
         Repeater {
             model: [
                 {mode:"default", title:"Default", detail:"Your everyday lighting", symbol:"◌"},
-                {mode:"passive", title:"Game mode", detail:"Super+Esc cycles games · live keyboard previews", symbol:"~"}
+                {mode:"passive", title:"Arcade", detail:"Super+Esc cycles games · live keyboard previews", symbol:"~"}
             ]
             Rectangle {
                 id: choice
